@@ -1,0 +1,21 @@
+SECURITIES AND EXCHANGE BOARD OF INDIA
+CIRCULAR
+SEBI/HO/MIRSD/DEMO/P/CIR/2026/117                                   November 6, 2026
+
+To,
+All Stock Brokers registered with SEBI
+
+Subject: Amendment to Master Circular on Log Retention and Access Control for Stock Brokers
+
+1. SEBI, vide circular SEBI/HO/MIRSD/DEMO/P/CIR/2026/101 dated November 1, 2026, issued the Master Circular on Log Retention and Access Control for Stock Brokers. Based on feedback from market participants, the following amendments are made.
+
+2. In clause 3.1 of the said Master Circular, the words "a minimum period of 2 years" shall be substituted with "a minimum period of 5 years".
+
+3. After clause 3.2 of the said Master Circular, the following clause shall be inserted:
+3.3 Stock brokers shall raise an automated alert to the security team within 15 minutes of any attempt to modify or delete order management system logs.
+
+4. All other provisions of the Master Circular remain unchanged.
+
+5. This circular comes into force with immediate effect.
+
+(Demo circular created for the RegMind hackathon. Not an actual SEBI document.)
