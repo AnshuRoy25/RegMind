@@ -1,0 +1,15 @@
+psycopg2-binary
+alembic
+sqlalchemy
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
+cryptography
+httpx
+websockets
+google-adk
+pymupdf
+pytesseract
+pillow
+python-docx

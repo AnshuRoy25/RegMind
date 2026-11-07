@@ -1,0 +1,40 @@
+SECURITIES AND EXCHANGE BOARD OF INDIA
+CIRCULAR
+SEBI/HO/MIRSD/DEMO/P/CIR/2026/101                                   November 1, 2026
+
+To,
+All Stock Brokers registered with SEBI
+All recognised Stock Exchanges
+
+Subject: Master Circular on Log Retention and Access Control for Stock Brokers
+
+1. Background
+1.1 Stock brokers increasingly rely on internet and mobile based trading systems. Recent inspections found gaps in how order logs are stored and in how employees access back office systems.
+1.2 To strengthen the integrity and auditability of these systems, SEBI has decided to lay down the following requirements, in consultation with the stock exchanges.
+
+2. Applicability
+2.1 The provisions of this circular shall apply to all stock brokers offering internet based trading or mobile trading.
+
+3. Log Retention
+3.1 Stock brokers shall retain logs of the order management system for a minimum period of 2 years.
+3.2 Such logs shall be stored in write-once-read-many (WORM) storage so that they cannot be altered.
+
+4. Access Control
+4.1 Stock brokers shall enforce multi-factor authentication for all employees accessing the back office system.
+4.2 Stock brokers shall not share privileged credentials between employees.
+4.3 Stock brokers shall automatically terminate inactive back office sessions after a maximum of 15 minutes of inactivity.
+
+5. Governance and Reporting
+5.1 Stock brokers shall submit a quarterly compliance report on the above to the stock exchange.
+5.2 Stock brokers shall designate a senior official as the Technology Compliance Officer, who shall be responsible for implementation of this circular.
+5.3 The board of directors of the stock broker shall review compliance with this circular at least once a year.
+
+6. Definitions
+6.1 "Order management system" means the system used to receive, validate and route client orders.
+6.2 "Back office system" means the systems used for client onboarding, settlement, funds and securities handling.
+
+7. Stock exchanges are directed to bring the provisions of this circular to the notice of their members and to monitor compliance.
+
+8. This circular comes into force with immediate effect.
+
+(Demo circular created for the RegMind hackathon. Not an actual SEBI document.)

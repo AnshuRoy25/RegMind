@@ -1,0 +1,38 @@
+SECURITIES AND EXCHANGE BOARD OF INDIA
+CIRCULAR
+SEBI/HO/MIRSD/DEMO/P/CIR/2026/102                                   November 3, 2026
+
+To,
+All Stock Brokers registered with SEBI
+All recognised Stock Exchanges
+
+Subject: Master Circular on Cyber Security for Client Facing Trading Applications
+
+1. Background
+1.1 Client facing web and mobile trading applications are a frequent target of credential theft, data leaks and account takeover attempts.
+1.2 To protect investors and the integrity of the market, SEBI has decided to lay down the following baseline security requirements for such applications.
+
+2. Applicability
+2.1 The provisions of this circular shall apply to all stock brokers providing web based or mobile trading applications to clients.
+
+3. Data Protection
+3.1 Stock brokers shall encrypt all client personal and financial data at rest using AES-256 or an equivalent algorithm.
+3.2 All communication between client applications and broker servers shall use TLS version 1.2 or higher.
+
+4. Login Security
+4.1 Stock brokers shall lock a client account for at least 15 minutes after 5 consecutive failed login attempts.
+4.2 Mobile trading applications shall detect rooted or jailbroken devices and block trading from such devices.
+
+5. Incident Handling and Governance
+5.1 Stock brokers shall report any cyber security incident affecting client data to the stock exchange within 6 hours of detection.
+5.2 Stock brokers shall appoint a Chief Information Security Officer responsible for implementation of this circular.
+5.3 Stock brokers shall conduct a cyber security awareness session for all employees at least once every six months.
+
+6. Definitions
+6.1 "Client data" means any personal, financial or trading information relating to a client of the stock broker.
+
+7. Stock exchanges are directed to bring the provisions of this circular to the notice of their members and to monitor compliance.
+
+8. This circular comes into force with immediate effect.
+
+(Demo circular created for the RegMind hackathon. Not an actual SEBI document.)

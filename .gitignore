@@ -1,0 +1,14 @@
+# secrets
+.env
+names.txt
+
+# python
+__pycache__/
+*.pyc
+virtual/
+venv/
+.venv/
+
+# runtime files
+storage/
+*.log

@@ -2,34 +2,32 @@
 
 ### Your compliance team, now with AI teammates in the chat
 
-RegMind.ai puts a team of AI agents inside your team chat that turn SEBI circulars into engineering work, keep that work in sync when the rules change, and check the finished code against the law before anything is marked done.
+RegMind.ai puts five AI agents inside your team chat through **Switch**. They turn SEBI circulars into engineering tasks, get a human to approve before anything moves, and check the engineer's pull request against the rule before a task is marked done.
 
-Built for **Flip the Switch** (WeMakeDevs × Switch) · Track 01: Best Business Workflow
+Built for **Flip the Switch** (WeMakeDevs × DevTools Academy × Switch) · Track 01: Best Business Workflow
 
 ---
 
 ## The problem
 
-Every time SEBI issues a circular, a stock broker has to work out what changed and build it into their systems. The rules are written in legal language, but the work is done by engineers. So today it goes like this:
+Every time SEBI issues a circular, a stock broker has to work out what changed and build it into their systems. The rules are written in legal language, but the work is done by engineers. Today it usually goes like this:
 
 1. A compliance officer reads a long circular and figures out what applies.
 2. They explain it to engineers over calls, emails and spreadsheets.
 3. Engineers build what they understood.
-4. Weeks later someone manually checks whether what got built actually meets the rule.
+4. Weeks later someone checks by hand whether what got built actually meets the rule.
 
-It gets worse when SEBI amends a rule that is already being built. Nobody tells the engineer halfway through, so they ship the old version, and the gap is only found during an audit.
-
-Small brokers feel this the most, because they don't have big compliance teams.
+Things get lost at every step, and gaps only show up during an audit. Small brokers feel this the most because they don't have big compliance teams.
 
 ---
 
 ## The solution
 
-RegMind.ai is a set of five AI agents that join your team's chat room through **Switch** and work alongside the compliance officer and the engineers.
+RegMind.ai is a team of five agents that sit in the same chat room as the compliance officer and the engineers.
 
-The officer drops a circular into the chat. The agents read it, break it into obligations, ask the officer to approve, turn the technical ones into clear engineering tasks, and assign them. When an engineer finishes, they say so in the chat with a PR number, and an agent checks the actual code against the rule. If SEBI changes the rule midway, an agent finds the affected task, pauses it and tells the engineer exactly what changed.
+The officer drops a circular into the room. The agents read it, split it into obligations, and ask the officer to approve. Approved technical obligations become engineering tasks with a plain-English spec and an evidence checklist. When an engineer finishes, they ask the auditor to review their pull request, and the auditor reads the real code on GitHub and checks it against the checklist.
 
-Everything happens in the conversation, so everyone sees what the agents are doing and can step in at any point. People make the decisions; the agents do the reading, the translating and the checking.
+Everything happens in the conversation, so everyone sees what the agents are doing and can step in at any point. People make the decisions. The agents do the reading, the translating and the checking.
 
 ---
 
@@ -37,128 +35,219 @@ Everything happens in the conversation, so everyone sees what the agents are doi
 
 | Agent | What it does |
 |---|---|
-| **regmind-intake** | Reads a new circular, decides if it applies to the firm, and whether it's a new master circular or an amendment to an old one. Hands it to the right agent. |
-| **regmind-parser** | Splits the circular into clauses and sorts each one: technical, business, prohibitive, governance or informational, plus how urgent it is. Asks the compliance officer to approve before anything moves. |
-| **regmind-spec** | Turns each approved technical obligation into an engineering task with a plain-English spec and an evidence checklist, then assigns it to an engineer. |
-| **regmind-router** | Handles amendments. Finds the task a changed rule affects and updates it based on where that task is right now. |
-| **regmind-auditor** | When an engineer says a task is done, reads the pull request and checks every item on the evidence checklist. Marks it complete, or explains exactly what's missing. |
+| **regmind-intake** | Reads a new circular (PDF, DOCX, image or text), decides if it applies to the firm, and registers it. Hands it to the parser. |
+| **regmind-parser** | Splits the circular into clauses and classifies each one: technical, business, prohibitive, governance or informational, plus urgency. Asks the compliance officer to approve. After approval it splits the list into work for engineering and work for the compliance team. |
+| **regmind-spec** | Turns each approved technical obligation into an engineering task (TSK-001, TSK-002, ...) with a spec and an evidence checklist, and tracks when an engineer starts it. |
+| **regmind-router** | Handles amendments to an earlier circular. Finds the tasks a changed rule affects and updates them based on their current status. |
+| **regmind-auditor** | Reads the engineer's pull request from GitHub, masks any secrets in it, and checks every item on the task's evidence checklist. Marks the task complete or lists exactly what's missing. |
 
-Agents pass work to each other by @mentioning the next agent in the room, the same way a person would.
+Agents hand work to each other by @mentioning the next agent in the room, the same way a person would.
+
+![The five agents](app/agents/flow/agents.png)
+
+![Workflow](app/agents/flow/workflow.png)
 
 ---
 
-## How it works in the chat
+## The workflow (what the demo shows)
 
-**A new circular arrives**
+Everything below happens in one Mattermost channel connected through Switch, with a compliance officer, an engineer and the five agents.
 
-> **Priya (compliance):** @regmind-intake new SEBI circular: master_circular.pdf
+**1. A circular arrives**
+
+> **Compliance officer:** @regmind-intake new SEBI circular, please review *(attaches master_circular.txt)*
 >
-> **regmind-intake:** This applies to us: it sets log retention and access control rules for brokers. Type: master circular.
+> **RegMind Intake:** Read Master Circular on Log Retention and Access Control for Stock Brokers. It applies to us. Type: master circular.
 > @regmind-parser please extract obligations from circular_id=1
 >
-> **regmind-parser:** Extracted 9 clauses. 3 technical items will become engineering tasks. Please review and reply "approved".
+> **RegMind Parser:** Extracted 15 clauses from circular 1:
+> • OBL-004 · 3.1 · technical · urgent · Retain order management system logs for a minimum of 2 years
+> • OBL-005 · 3.2 · technical · urgent · Store OMS logs in WORM storage
+> • ...
+> 4 technical items will become engineering tasks. Compliance officer, please review and reply "approved".
+
+**2. A human approves**
+
+> **Compliance officer:** @regmind-parser approved
 >
-> **Priya:** @regmind-parser approved
+> **RegMind Parser:** 15 obligations approved.
+> To engineering: 3.1 log retention, 3.2 WORM storage, 4.1 MFA, 4.3 session timeout
+> For the compliance team: quarterly report, appoint a Technology Compliance Officer, annual board review, no shared credentials
+> @regmind-spec please create engineering tasks for circular_id=1
 >
-> **regmind-spec:** Created TSK-001 · urgent · @aayush
-> Keep order system logs for 730 days in tamper-proof storage.
-> Evidence: retention set to 730 days in config · object lock on the log bucket · test showing a log can't be deleted
+> **RegMind Spec:** Created 4 engineering tasks:
+> TSK-001 · urgent · Retain OMS logs for 730 days.
+> Evidence: retention_days set to 730 in the logging config · automated test showing logs can't be deleted early
 
-**SEBI changes the rule while it's being built**
+**3. An engineer picks up a task and opens a PR**
 
-> **Aayush:** @regmind-spec starting TSK-001
+> **Engineer:** @regmind-spec starting TSK-001
+
+The engineer opens a pull request on GitHub ([example PR](https://github.com/AnshuRoy25/regmind-demo-broker/pull/1)).
+
+**4. The auditor checks the real code**
+
+> **Engineer:** @regmind-auditor review PR #1 for TSK-001
 >
-> **Priya:** @regmind-intake SEBI just issued an amendment: amendment.pdf
->
-> **regmind-router:** @aayush TSK-001 is PAUSED. SEBI changed clause 3.1: logs must now be kept 5 years, not 2. The updated spec is on the task.
+> **RegMind Auditor:** ✅ TSK-001 verified against PR #1 and marked complete.
+> • retention_days set to 730 in config/logging.yaml ✓
+> • automated test verifying log deletion is prevented in tests/test_log_retention.py ✓
 
-**The work gets checked against the rule**
-
-> **Aayush:** @regmind-auditor done TSK-001, PR #4
->
-> **regmind-auditor:** TSK-001 isn't complete yet. PR #4 is missing:
-> • retention is 730 days in config/logging.yaml, it needs 1825 (rule changed to 5 years)
-> • no object lock on the log bucket: add it in infra/s3.tf
->
-> **Aayush:** @regmind-auditor fixed, done TSK-001, PR #5
->
-> **regmind-auditor:** TSK-001 verified against PR #5 and marked complete.
-
----
-
-## What happens when a rule changes
-
-This is the core of RegMind.ai. When an amendment hits an existing obligation, the router checks the live status of its task and acts on it:
-
-| Task status | What RegMind does |
-|---|---|
-| Not started | Rewrites the spec quietly. No noise. |
-| Being built | Pauses the task and sends the engineer the new requirements in the chat. |
-| Already shipped | Creates a separate change task for just the difference, keeping the shipped work intact. |
-| Rule withdrawn | Deprecates the task so nobody builds something that's no longer needed. |
-| New clause added | Creates a new obligation and sends it to regmind-spec to become a task. |
-
-This decision is made in plain code, not by the AI, so it behaves the same way every time.
+If something is missing, the auditor says exactly what, for example "retention_days is 365 in config/logging.yaml, needs to be 730", and the task stays open until a fixed PR passes.
 
 ---
 
 ## How Switch is used
 
-Switch is the backbone of RegMind.ai. Without it the agents would have no shared place to work with people.
+Switch is the backbone of RegMind.ai. Without it the agents would have no shared place to work with people, and the project would not work.
 
-- **One room, people and agents together.** The compliance officer, engineers and all five agents sit in the same `#regmind` room. Every handoff, approval and alert is a visible message.
-- **Agents hand off by @mention.** intake mentions parser, parser mentions spec, router mentions the engineer. The room is the workflow.
-- **Humans stay in control.** Nothing goes to engineering until a person approves in the chat. Engineers start and finish tasks by talking to the agents.
-- **Works where the team already is.** Through Switch, the same room works in Slack, Teams, Discord or Mattermost.
+- **Agents are registered on Switch.** On setup, our backend calls Switch's Agent Protocol to register all five agents (`regmind-intake`, `regmind-parser`, `regmind-spec`, `regmind-router`, `regmind-auditor`), each with its own API key, display name and avatar. Their addressing policy is set to open so anyone in the room can talk to them.
+- **One room for people and agents.** The backend creates a **Compliance Office** room on Switch and adds the five agents. Switch links that room to a Mattermost channel. The compliance officer and engineers join the channel; the agents are already there.
+- **Live stream in, HTTP out.** The backend holds a WebSocket connection to Switch as `regmind-intake` and receives every message in the room, including file attachments, which it downloads through Switch's media API. Replies are posted back into the room as the right agent over HTTP.
+- **Agents hand off by @mention.** A small orchestrator reads the mentions in each message, runs the mentioned agent, posts its reply, and follows any handoff (intake → parser → spec), with a hop limit so agents can't loop.
+- **Humans stay in control.** Nothing reaches engineering until a person approves in the chat, and engineers drive their own tasks by talking to the agents.
+- **Runs on Mattermost.** The team works in Mattermost, which comes bundled with Switch. Because the agents talk to Switch and not to Mattermost directly, the same room could be moved to Slack, Teams or Discord without changing the agents.
 
-Our agents are custom Google ADK agents that connect to the room through Switch's agent protocol.
+Our agents are custom **Google ADK** agents using **Gemini**, connected to Switch through its Agent Protocol.
+
+---
+
+## When a rule changes (amendments)
+
+SEBI often amends a circular while the work is already in progress. When an amendment changes an existing clause, `regmind-router` looks at the live status of each affected task:
+
+| Task status | What RegMind does |
+|---|---|
+| Not started | Rewrites the spec. |
+| In progress | Pauses the task and tells the engineer what changed. |
+| Already done | Creates a separate change task for just the difference. |
+| Rule withdrawn | Deprecates the task. |
+| New clause added | Creates a new obligation for regmind-spec. |
+
+This decision is made in plain Python, not by the model, so it behaves the same way every time. A sample amendment is in `samples/amendment_circular.txt`.
 
 ---
 
 ## Under the hood
 
-- **Reliable where it matters.** Splitting a circular into clauses, deciding what happens to a task after an amendment, and every status change are done in plain Python, so they are predictable. The AI is used for reading, classifying, writing specs and checking evidence.
-- **Every AI decision is validated.** If an agent sends a wrong section number or category, the tool rejects it and the agent corrects itself, instead of bad data getting saved.
-- **Clear task states.** Every task moves through open → ongoing → done → complete, with paused and deprecated for amendments. Invalid moves are blocked, so a paused task can't be marked done until it's resumed.
-- **Full audit trail.** Every decision is logged with a timestamp: which circular was reviewed, who approved, what changed and why.
+- **Reliable where it matters.** Splitting a circular into clauses, task state changes and amendment decisions are plain Python. The model is used for reading, classifying, writing specs and checking evidence.
+- **Validated tool calls.** If an agent passes a wrong section number or category, the tool rejects it and the agent corrects itself, so bad data isn't saved.
+- **Clear task states.** Tasks move through open → ongoing → done → complete, with paused and deprecated for amendments. Invalid moves are blocked.
+- **Secrets never reach the model.** Before a PR diff is sent to Gemini, API keys, tokens, passwords, private keys, emails and IP addresses are replaced with placeholders.
+- **Audit trail.** Every agent action and approval is logged with a timestamp.
 
 ---
 
 ## Tech stack
 
-- **Agents:** Google ADK with Gemini
+- **Agents:** Google ADK with Gemini (`gemini-3.5-flash-lite`)
+- **Team chat:** Switch (self-hosted on Railway) with Mattermost
 - **Backend:** FastAPI (Python)
-- **Database:** PostgreSQL (circulars, obligations, tasks, audit log, agent sessions)
-- **Team chat:** Switch (Slack, Teams, Discord, Mattermost)
-- **Documents:** PyMuPDF for reading circulars
+- **Database:** PostgreSQL with SQLAlchemy and Alembic
+- **Documents:** PyMuPDF, python-docx and Tesseract OCR for reading circulars
 - **Code checks:** GitHub API for pull request diffs
 
 ---
 
-## Security and privacy
+## Project structure
 
-- **Secrets are masked before the AI sees anything.** API keys, passwords, tokens, private keys, emails and IP addresses in code diffs are replaced with placeholders before they're sent to the model.
-- **The model is swappable.** ADK supports other models, so a bank can run RegMind on a model hosted inside its own infrastructure.
-- **Everything is auditable.** Every agent action is recorded with a timestamp, ready for a regulatory inspection.
+```
+backend/
+├── app/
+│   ├── agents/
+│   │   ├── definitions/     # the 5 ADK agents
+│   │   ├── prompts/         # one prompt file per agent
+│   │   ├── tools/           # circular, obligation, task and GitHub tools
+│   │   ├── orchestrator.py  # @mention routing and agent handoffs
+│   │   ├── runtime.py       # ADK runner, one session per room and agent
+│   │   └── guardrails.py    # secret masking for PR diffs
+│   ├── integrations/switch/
+│   │   ├── provisioner.py   # registers agents and creates the room on Switch
+│   │   ├── supervisor.py    # WebSocket listener, attachment download
+│   │   ├── agent_registry.py# posts replies as each agent
+│   │   ├── protocol.py      # Switch Agent Protocol client
+│   │   └── gateway.py       # Switch admin API (rooms, workspaces)
+│   ├── api/routes/          # REST API under /api/v1
+│   ├── models/              # SQLAlchemy models
+│   ├── schemas/             # Pydantic schemas
+│   ├── services/            # circular, obligation, task, audit services
+│   └── main.py
+├── migrations/              # Alembic migrations
+├── samples/                 # demo circulars and diffs
+├── requirements.txt
+└── .env.example
+```
 
 ---
 
-## What makes it different
+## How to run it
 
-Existing compliance tools stop at the compliance team: they extract obligations, assign an owner and track a checkbox. RegMind.ai goes all the way to verified engineering work.
+### 1. Get a Switch server
 
-- **Legal text in, developer-ready tasks out.** Engineers never have to read the circular.
-- **Amendments update live work.** Tasks are paused, rewritten or split based on where they are, instead of just sending another alert.
-- **Proof, not promises.** The auditor checks the actual code against the rule, so "done" means the rule is really met.
-- **It lives in the chat.** No new dashboard to learn. The team works with the agents where they already talk.
+Deploy the **Agent Switch** template on Railway. It starts the Switch server, Postgres and a bundled Mattermost. Note the Switch URL and the admin email and password you set during deploy.
+
+### 2. Set up the backend
+
+You need Python 3.11+ and PostgreSQL running locally.
+
+```bash
+cd backend
+python -m venv virtual
+virtual\Scripts\activate          # Windows
+# source virtual/bin/activate     # macOS / Linux
+pip install -r requirements.txt
+```
+
+Create a database called `regmind`, then copy `.env.example` to `.env` and fill it in:
+
+```
+USER=postgres
+PASSWORD=your_db_password
+HOST=localhost
+PORT=5432
+DBNAME=regmind
+SECRET_KEY=any_long_random_string   # encrypts agent API keys, don't change it after provisioning
+GOOGLE_API_KEY=your_gemini_api_key
+GEMINI_MODEL=gemini-3.5-flash-lite
+SWITCH_URL=https://your-switch.up.railway.app
+SWITCH_EMAIL=switch_admin_email
+SWITCH_PASSWORD=switch_admin_password
+SWITCH_AUTOCONNECT=true
+GITHUB_REPO=owner/repo              # repo the auditor reads PRs from
+GITHUB_TOKEN=                       # optional for public repos
+```
+
+Create the tables and start the server:
+
+```bash
+alembic upgrade head
+uvicorn app.main:app
+```
+
+Check `http://localhost:8000/api/v1/health`.
+
+### 3. Register the agents on Switch
+
+Open `http://localhost:8000/docs` and call `POST /api/v1/switch/provision`. This registers the five agents, creates the **Compliance Office** room and adds the agents to it. The terminal should show `Loaded 5 Switch agents` and `Switch connection ready`.
+
+Run only one backend per Switch server, because each agent allows one live connection.
+
+### 4. Use it
+
+1. Open the Mattermost URL from Railway and log in with the regular user account (not the admin).
+2. Open the **Compliance Office** channel. The five agents greet you there.
+3. Attach `samples/master_circular.txt` with `@regmind-intake new SEBI circular, please review`.
+4. When the parser asks, reply `@regmind-parser approved`.
+5. Start a task: `@regmind-spec starting TSK-001`.
+6. Open a PR in the repo set in `GITHUB_REPO`, then: `@regmind-auditor review PR #1 for TSK-001`.
 
 ---
 
 ## What's next
 
-- Bring a coding agent like Claude Code or Codex into the room to implement tasks, with RegMind's auditor checking its work.
-- Track the business and compliance-team obligations (reports, reviews) with reminders, not just the technical ones.
-- Let the auditor flag pull requests that break a prohibitive rule, like a hardcoded shared password.
+- Bring a coding agent like Claude Code or Codex into the room to implement tasks, with the auditor checking its work.
+- Reminders for the compliance-team obligations (quarterly reports, board reviews).
+- Let the auditor comment on the PR directly on GitHub.
 - Support RBI and other regulators.
 
 ---
@@ -167,7 +256,7 @@ Existing compliance tools stop at the compliance team: they extract obligations,
 
 **Team ASQUARE**
 
-- Anshu Roy · 24bph025@nith.ac.in
-- Aayush Dubey · dubeyaayushop@gmail.com
+- Anshu Roy
+- Aayush Dubey
 
 *The circulars used in the demo are mock documents written for this hackathon, not real SEBI circulars.*
