@@ -99,6 +99,8 @@ If something is missing, the auditor says exactly what, for example "retention_d
 
 ## How Switch is used
 
+![System architecture](app/agents/flow/system_architecture.png)
+
 Switch is the backbone of RegMind.ai. Without it the agents would have no shared place to work with people, and the project would not work.
 
 - **Agents are registered on Switch.** On setup, our backend calls Switch's Agent Protocol to register all five agents (`regmind-intake`, `regmind-parser`, `regmind-spec`, `regmind-router`, `regmind-auditor`), each with its own API key, display name and avatar. Their addressing policy is set to open so anyone in the room can talk to them.
