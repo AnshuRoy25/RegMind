@@ -238,6 +238,8 @@ virtual\Scripts\activate          # Windows
 pip install -r requirements.txt
 ```
 
+The sample circulars are `.txt` files, so nothing else is needed for the demo. To read scanned PDFs, also install the [Tesseract](https://github.com/tesseract-ocr/tesseract) OCR engine.
+
 Create a database called `regmind`, then copy `.env.example` to `.env` and fill it in:
 
 ```
@@ -261,7 +263,7 @@ Create the tables and start the server:
 
 ```bash
 alembic upgrade head
-uvicorn app.main:app
+python -m uvicorn app.main:app
 ```
 
 Check `http://localhost:8000/api/v1/health`.
@@ -276,6 +278,7 @@ Run only one backend per Switch server, because each agent allows one live conne
 
 1. Open the Mattermost URL from Railway and log in with the regular user account (not the admin).
 2. Open the **Compliance Office** channel. The five agents greet you there.
+   If you'd rather use your own channel: create it, add the Switch bot as a member, then add each agent with `!invite-agent regmind-intake` (and the same for parser, spec, router and auditor).
 3. Attach `samples/master_circular.txt` with `@regmind-intake new SEBI circular, please review`.
 4. When the parser asks, reply `@regmind-parser approved`.
 5. Start a task: `@regmind-spec starting TSK-001`.
