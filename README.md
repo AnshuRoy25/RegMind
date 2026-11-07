@@ -4,7 +4,7 @@
 
 RegMind.ai puts five AI agents inside your team chat through **Switch**. They turn SEBI circulars into engineering tasks, get a human to approve before anything moves, and check the engineer's pull request against the rule before a task is marked done.
 
-Built for **Flip the Switch** (WeMakeDevs × DevTools Academy × Switch) · Track 01: Best Business Workflow
+Built for **Flip the Switch** (WeMakeDevs × DevTools Academy × Switch)
 
 ---
 
