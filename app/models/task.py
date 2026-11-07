@@ -4,7 +4,7 @@ from sqlalchemy import ForeignKey, Integer, String, Text
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from regmind.app.models.base import Base, TimestampMixin
+from app.models.base import Base, TimestampMixin
 
 
 class Task(TimestampMixin, Base):

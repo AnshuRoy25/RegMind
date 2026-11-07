@@ -3,7 +3,7 @@ import uuid
 from sqlalchemy import ForeignKey, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
 
-from regmind.app.models.base import Base, TimestampMixin, UUIDMixin
+from app.models.base import Base, TimestampMixin, UUIDMixin
 
 
 class Approval(UUIDMixin, TimestampMixin, Base):

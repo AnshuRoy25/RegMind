@@ -5,7 +5,7 @@ from sqlalchemy import Date, ForeignKey, Integer, String, Text, UniqueConstraint
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column
 
-from regmind.app.models.base import Base, TimestampMixin, UUIDMixin
+from app.models.base import Base, TimestampMixin, UUIDMixin
 
 
 class PolicyEntry(UUIDMixin, TimestampMixin, Base):

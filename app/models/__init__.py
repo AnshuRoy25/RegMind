@@ -1,14 +1,14 @@
-from regmind.app.models.approval import Approval
-from regmind.app.models.audit import AuditEvent
-from regmind.app.models.base import Base
-from regmind.app.models.change import ChangeSet, ChangeTask
-from regmind.app.models.circular import Circular, CircularPage
-from regmind.app.models.department import Department, DepartmentApprover
-from regmind.app.models.llm import LLMConfig
-from regmind.app.models.obligation import Obligation
-from regmind.app.models.organization import Employee, EmployeePlatformIdentity, Organization
-from regmind.app.models.policy import PolicyEntry, PolicyVersion
-from regmind.app.models.switch import (
+from app.models.approval import Approval
+from app.models.audit import AuditEvent
+from app.models.base import Base
+from app.models.change import ChangeSet, ChangeTask
+from app.models.circular import Circular, CircularPage
+from app.models.department import Department, DepartmentApprover
+from app.models.llm import LLMConfig
+from app.models.obligation import Obligation
+from app.models.organization import Employee, EmployeePlatformIdentity, Organization
+from app.models.policy import PolicyEntry, PolicyVersion
+from app.models.switch import (
     SwitchAgent,
     SwitchAgentRole,
     SwitchConnectionStatus,
@@ -16,7 +16,7 @@ from regmind.app.models.switch import (
     SwitchRoom,
     SwitchWorkspace,
 )
-from regmind.app.models.task import Task
+from app.models.task import Task
 
 __all__ = [
     "Approval",

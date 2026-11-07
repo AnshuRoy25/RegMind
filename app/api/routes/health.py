@@ -3,12 +3,12 @@ from __future__ import annotations
 from fastapi import APIRouter
 from sqlalchemy import func, select, text
 
-from regmind.app.core.config import settings
-from regmind.app.core.database import SessionLocal
-from regmind.app.integrations.switch.supervisor import supervisor
-from regmind.app.models.switch import SwitchAgent
-from regmind.app.schemas.api import HealthResponse
-from regmind.app.services.document_service import ocr_available
+from app.core.config import settings
+from app.core.database import SessionLocal
+from app.integrations.switch.supervisor import supervisor
+from app.models.switch import SwitchAgent
+from app.schemas.api import HealthResponse
+from app.services.document_service import ocr_available
 
 router = APIRouter(tags=["health"])
 

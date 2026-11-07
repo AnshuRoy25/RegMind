@@ -1,13 +1,13 @@
-﻿﻿"""
+"""
 Tools for turning a circular into obligations. Used by regmind-parser,
 regmind-spec and regmind-router.
 """
 
 from pydantic import BaseModel, Field
 
-from regmind.app.agents.contracts import OBLIGATION_CATEGORIES, URGENCY_TIERS
-from regmind.app.agents.gateway import services
-from regmind.app.agents.tools.clauses import split_into_clauses
+from app.agents.contracts import OBLIGATION_CATEGORIES, URGENCY_TIERS
+from app.agents.gateway import services
+from app.agents.tools.clauses import split_into_clauses
 
 
 class ObligationInput(BaseModel):

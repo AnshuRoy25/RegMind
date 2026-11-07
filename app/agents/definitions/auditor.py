@@ -1,9 +1,9 @@
-﻿﻿from google.adk.agents import Agent
+from google.adk.agents import Agent
 
-from regmind.app.agents.prompts import load_prompt
-from regmind.app.agents.tools.github_tools import get_pr_diff
-from regmind.app.agents.tools.task_tools import get_task, mark_task_done, record_verification
-from regmind.app.core.config import settings
+from app.agents.prompts import load_prompt
+from app.agents.tools.github_tools import get_pr_diff
+from app.agents.tools.task_tools import get_task, mark_task_done, record_verification
+from app.core.config import settings
 
 auditor_agent = Agent(
     name="regmind_auditor",

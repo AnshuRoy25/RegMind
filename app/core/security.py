@@ -4,7 +4,7 @@ import secrets
 
 from cryptography.fernet import Fernet, InvalidToken
 
-from regmind.app.core.config import settings
+from app.core.config import settings
 
 
 def _fernet() -> Fernet:

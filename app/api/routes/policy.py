@@ -2,13 +2,13 @@ from __future__ import annotations
 
 from fastapi import APIRouter, HTTPException
 
-from regmind.app.schemas.api import (
+from app.schemas.api import (
     PolicyEntryCreate,
     PolicyEntryOut,
     PolicyVersionCreate,
     PolicyVersionOut,
 )
-from regmind.app.services.policy_service import policy_service
+from app.services.policy_service import policy_service
 
 router = APIRouter(prefix="/policy", tags=["policy"])
 

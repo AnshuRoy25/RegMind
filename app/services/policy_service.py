@@ -4,11 +4,11 @@ import uuid
 
 from sqlalchemy import select
 
-from regmind.app.core.database import SessionLocal
-from regmind.app.models.department import Department
-from regmind.app.models.obligation import Obligation
-from regmind.app.models.policy import PolicyEntry, PolicyVersion
-from regmind.app.services.common import ensure_default_organization, iso
+from app.core.database import SessionLocal
+from app.models.department import Department
+from app.models.obligation import Obligation
+from app.models.policy import PolicyEntry, PolicyVersion
+from app.services.common import ensure_default_organization, iso
 
 
 def _snapshot(row: PolicyEntry) -> dict:

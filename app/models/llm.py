@@ -3,7 +3,7 @@ import uuid
 from sqlalchemy import Boolean, Float, ForeignKey, String, Text, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column
 
-from regmind.app.models.base import Base, TimestampMixin, UUIDMixin
+from app.models.base import Base, TimestampMixin, UUIDMixin
 
 
 class LLMConfig(UUIDMixin, TimestampMixin, Base):

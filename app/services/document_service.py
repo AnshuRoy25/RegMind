@@ -11,10 +11,10 @@ import pymupdf
 import pytesseract
 from PIL import Image
 
-from regmind.app.core.config import settings
-from regmind.app.core.database import SessionLocal
-from regmind.app.models.circular import Circular, CircularPage
-from regmind.app.services.common import org_id_or_none
+from app.core.config import settings
+from app.core.database import SessionLocal
+from app.models.circular import Circular, CircularPage
+from app.services.common import org_id_or_none
 
 log = logging.getLogger("regmind.documents")
 

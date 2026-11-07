@@ -1,4 +1,4 @@
-﻿﻿"""
+"""
 Fetch pull request diffs for regmind-auditor.
 
 Order of lookup:
@@ -12,8 +12,8 @@ from pathlib import Path
 
 import httpx
 
-from regmind.app.agents.guardrails import mask_secrets
-from regmind.app.core.config import settings
+from app.agents.guardrails import mask_secrets
+from app.core.config import settings
 
 MAX_DIFF_CHARS = 30000
 

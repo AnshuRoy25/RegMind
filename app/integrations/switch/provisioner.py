@@ -6,15 +6,15 @@ from typing import Any
 
 from sqlalchemy import select
 
-from regmind.app.core.config import settings
-from regmind.app.core.database import SessionLocal
-from regmind.app.core.security import decrypt_secret, encrypt_secret
-from regmind.app.integrations.switch.gateway import SwitchAPIError, get_gateway
-from regmind.app.integrations.switch.protocol import register_agent
-from regmind.app.models.organization import Organization
-from regmind.app.models.switch import SwitchAgent, SwitchAgentRole, SwitchRoom, SwitchWorkspace
-from regmind.app.services.audit_service import audit_service
-from regmind.app.services.common import ensure_default_organization
+from app.core.config import settings
+from app.core.database import SessionLocal
+from app.core.security import decrypt_secret, encrypt_secret
+from app.integrations.switch.gateway import SwitchAPIError, get_gateway
+from app.integrations.switch.protocol import register_agent
+from app.models.organization import Organization
+from app.models.switch import SwitchAgent, SwitchAgentRole, SwitchRoom, SwitchWorkspace
+from app.services.audit_service import audit_service
+from app.services.common import ensure_default_organization
 
 log = logging.getLogger("regmind.switch.provisioner")
 

@@ -1,8 +1,8 @@
-﻿﻿from google.adk.agents import Agent
+from google.adk.agents import Agent
 
-from regmind.app.agents.prompts import load_prompt
-from regmind.app.agents.tools.obligation_tools import approve_obligations, get_circular_clauses, save_obligations
-from regmind.app.core.config import settings
+from app.agents.prompts import load_prompt
+from app.agents.tools.obligation_tools import approve_obligations, get_circular_clauses, save_obligations
+from app.core.config import settings
 
 parser_agent = Agent(
     name="regmind_parser",

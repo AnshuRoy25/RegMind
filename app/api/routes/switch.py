@@ -2,14 +2,14 @@ from __future__ import annotations
 
 from fastapi import APIRouter, HTTPException
 
-from regmind.app.core.config import settings
-from regmind.app.core.database import SessionLocal
-from regmind.app.integrations.switch.gateway import SwitchAPIError, get_gateway
-from regmind.app.integrations.switch.provisioner import provision_workspace
-from regmind.app.integrations.switch.agent_registry import registry
-from regmind.app.integrations.switch.supervisor import supervisor
-from regmind.app.models.switch import SwitchAgent, SwitchRoom, SwitchWorkspace
-from regmind.app.schemas.api import MessageResponse, SwitchInstallRequest, SwitchProvisionRequest
+from app.core.config import settings
+from app.core.database import SessionLocal
+from app.integrations.switch.gateway import SwitchAPIError, get_gateway
+from app.integrations.switch.provisioner import provision_workspace
+from app.integrations.switch.agent_registry import registry
+from app.integrations.switch.supervisor import supervisor
+from app.models.switch import SwitchAgent, SwitchRoom, SwitchWorkspace
+from app.schemas.api import MessageResponse, SwitchInstallRequest, SwitchProvisionRequest
 
 router = APIRouter(prefix="/switch", tags=["switch"])
 

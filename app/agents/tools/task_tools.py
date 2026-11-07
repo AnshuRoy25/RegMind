@@ -1,4 +1,4 @@
-﻿﻿"""
+"""
 Tools for engineering tasks. Used by regmind-spec, regmind-router and regmind-auditor.
 
 All status changes go through _move(), which enforces the task state machine
@@ -6,7 +6,7 @@ in plain Python. The LLM decides WHAT happened; this file decides what that
 means for the task.
 """
 
-from regmind.app.agents.gateway import services
+from app.agents.gateway import services
 
 # status -> statuses it may move to
 ALLOWED_MOVES = {

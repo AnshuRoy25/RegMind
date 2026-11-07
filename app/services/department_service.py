@@ -5,10 +5,10 @@ import uuid
 
 from sqlalchemy import func, select
 
-from regmind.app.core.database import SessionLocal
-from regmind.app.models.department import Department, DepartmentApprover
-from regmind.app.models.organization import Employee
-from regmind.app.services.common import ensure_default_organization, iso, utcnow
+from app.core.database import SessionLocal
+from app.models.department import Department, DepartmentApprover
+from app.models.organization import Employee
+from app.services.common import ensure_default_organization, iso, utcnow
 
 
 def slugify(value: str) -> str:

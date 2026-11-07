@@ -1,8 +1,8 @@
-﻿﻿from regmind.app.agents.definitions.auditor import auditor_agent
-from regmind.app.agents.definitions.intake import intake_agent
-from regmind.app.agents.definitions.parser import parser_agent
-from regmind.app.agents.definitions.router import router_agent
-from regmind.app.agents.definitions.spec import spec_agent
+from app.agents.definitions.auditor import auditor_agent
+from app.agents.definitions.intake import intake_agent
+from app.agents.definitions.parser import parser_agent
+from app.agents.definitions.router import router_agent
+from app.agents.definitions.spec import spec_agent
 
 # chat name (as people @mention it) -> ADK agent
 AGENTS = {

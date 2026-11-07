@@ -7,10 +7,10 @@ from dataclasses import dataclass, field
 
 from sqlalchemy import select
 
-from regmind.app.core.database import SessionLocal
-from regmind.app.core.security import decrypt_secret
-from regmind.app.models.switch import SwitchAgent, SwitchConnectionStatus
-from regmind.app.integrations.switch.protocol import SwitchProtocolClient
+from app.core.database import SessionLocal
+from app.core.security import decrypt_secret
+from app.models.switch import SwitchAgent, SwitchConnectionStatus
+from app.integrations.switch.protocol import SwitchProtocolClient
 
 log = logging.getLogger("regmind.switch.registry")
 

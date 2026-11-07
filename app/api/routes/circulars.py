@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 
-from regmind.app.core.config import settings
-from regmind.app.schemas.api import (
+from app.core.config import settings
+from app.schemas.api import (
     ApproveCircularRequest,
     ApproveCircularResponse,
     CircularDetail,
@@ -11,10 +11,10 @@ from regmind.app.schemas.api import (
     CircularUploadResponse,
     ObligationOut,
 )
-from regmind.app.services.audit_service import audit_service
-from regmind.app.services.circular_service import circular_service
-from regmind.app.services.document_service import DocumentError, document_service
-from regmind.app.services.obligation_service import obligation_service
+from app.services.audit_service import audit_service
+from app.services.circular_service import circular_service
+from app.services.document_service import DocumentError, document_service
+from app.services.obligation_service import obligation_service
 
 router = APIRouter(prefix="/circulars", tags=["circulars"])
 

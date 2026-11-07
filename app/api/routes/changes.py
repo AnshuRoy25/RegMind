@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from fastapi import APIRouter, HTTPException
 
-from regmind.app.schemas.api import ApprovalDecision, ChangeSetCreate
-from regmind.app.services.change_service import change_service
+from app.schemas.api import ApprovalDecision, ChangeSetCreate
+from app.services.change_service import change_service
 
 router = APIRouter(prefix="/changes", tags=["changes"])
 

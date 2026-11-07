@@ -11,24 +11,24 @@ from urllib.parse import urlencode
 
 import websockets
 
-from regmind.app.agents.orchestrator import find_mentioned_agents, handle_message
-from regmind.app.agents.runtime import is_agent
-from regmind.app.core.config import settings
-from regmind.app.core.context import (
+from app.agents.orchestrator import find_mentioned_agents, handle_message
+from app.agents.runtime import is_agent
+from app.core.config import settings
+from app.core.context import (
     current_agent_id,
     current_org_id,
     current_room_id,
     current_sender,
 )
-from regmind.app.core.database import SessionLocal
-from regmind.app.integrations.switch.agent_registry import (
+from app.core.database import SessionLocal
+from app.integrations.switch.agent_registry import (
     RegisteredAgent,
     registry,
     set_connection_status,
 )
-from regmind.app.models.switch import SwitchConnectionStatus, SwitchEvent
-from regmind.app.services.audit_service import audit_service
-from regmind.app.services.common import iso, utcnow
+from app.models.switch import SwitchConnectionStatus, SwitchEvent
+from app.services.audit_service import audit_service
+from app.services.common import iso, utcnow
 
 log = logging.getLogger("regmind.switch.supervisor")
 

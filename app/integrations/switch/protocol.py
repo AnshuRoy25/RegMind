@@ -5,7 +5,7 @@ from typing import Any
 
 import httpx
 
-from regmind.app.core.config import settings
+from app.core.config import settings
 
 log = logging.getLogger("regmind.switch.protocol")
 

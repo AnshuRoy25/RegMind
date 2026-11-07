@@ -1,6 +1,6 @@
-from regmind.app.core.database import SessionLocal
-from regmind.app.models.circular import Circular
-from regmind.app.services.common import iso, org_id_or_none
+from app.core.database import SessionLocal
+from app.models.circular import Circular
+from app.services.common import iso, org_id_or_none
 
 
 class SqlCircularService:

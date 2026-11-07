@@ -2,10 +2,10 @@ import uuid
 
 from sqlalchemy import select
 
-from regmind.app.core.database import SessionLocal
-from regmind.app.models.obligation import Obligation
-from regmind.app.models.task import Task
-from regmind.app.services.common import iso, org_id_or_none
+from app.core.database import SessionLocal
+from app.models.obligation import Obligation
+from app.models.task import Task
+from app.services.common import iso, org_id_or_none
 
 
 def _as_dict(row: Task, obligation_public_id: str) -> dict:

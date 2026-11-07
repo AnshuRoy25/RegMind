@@ -1,4 +1,4 @@
-﻿﻿"""
+"""
 Routes chat messages to agents and chains agent-to-agent handoffs.
 
 The Switch integration (Aayush) calls ONE function for every HUMAN message:
@@ -18,7 +18,7 @@ import logging
 import re
 from typing import Awaitable, Callable
 
-from regmind.app.agents import runtime
+from app.agents import runtime
 
 log = logging.getLogger("regmind.agents")
 

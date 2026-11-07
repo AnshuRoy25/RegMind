@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from fastapi import APIRouter
 
-from regmind.app.schemas.api import AuditEventOut
-from regmind.app.services.audit_service import audit_service
+from app.schemas.api import AuditEventOut
+from app.services.audit_service import audit_service
 
 router = APIRouter(prefix="/audit", tags=["audit"])
 

@@ -2,10 +2,10 @@ from __future__ import annotations
 
 from fastapi import APIRouter, HTTPException
 
-from regmind.app.agents.contracts import TASK_STATUSES, URGENCY_TIERS
-from regmind.app.schemas.api import TaskCreate, TaskOut, TaskStatusUpdate
-from regmind.app.services.audit_service import audit_service
-from regmind.app.services.task_service import task_service
+from app.agents.contracts import TASK_STATUSES, URGENCY_TIERS
+from app.schemas.api import TaskCreate, TaskOut, TaskStatusUpdate
+from app.services.audit_service import audit_service
+from app.services.task_service import task_service
 
 router = APIRouter(prefix="/tasks", tags=["tasks"])
 

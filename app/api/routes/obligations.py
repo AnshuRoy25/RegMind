@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from fastapi import APIRouter, HTTPException
 
-from regmind.app.schemas.api import ObligationOut
-from regmind.app.services.obligation_service import obligation_service
+from app.schemas.api import ObligationOut
+from app.services.obligation_service import obligation_service
 
 router = APIRouter(prefix="/obligations", tags=["obligations"])
 

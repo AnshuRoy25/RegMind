@@ -1,9 +1,9 @@
 from alembic import context 
 from sqlalchemy import engine_from_config, pool
 
-from regmind.app.core.config import settings 
-from regmind.app.core.database import Base
-import regmind.app.models
+from app.core.config import settings 
+from app.core.database import Base
+import app.models
 
 config = context.config
 

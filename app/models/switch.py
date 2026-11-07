@@ -1,11 +1,11 @@
-﻿﻿import uuid
+import uuid
 from enum import StrEnum
 
 from sqlalchemy import Boolean, ForeignKey, String, Text, UniqueConstraint
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from regmind.app.models.base import Base, TimestampMixin, UUIDMixin
+from app.models.base import Base, TimestampMixin, UUIDMixin
 
 
 class SwitchAgentRole(StrEnum):

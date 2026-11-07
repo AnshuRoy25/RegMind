@@ -1,9 +1,9 @@
 from fastapi import APIRouter
 
-from regmind.app.api.routes import (
+from app.api.routes import (
     tasks,
 )
-from regmind.app.api.routes import audit, changes, circulars, departments, health, obligations, policy, switch
+from app.api.routes import audit, changes, circulars, departments, health, obligations, policy, switch
 
 api_router = APIRouter()
 api_router.include_router(health.router)

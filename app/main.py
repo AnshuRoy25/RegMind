@@ -6,14 +6,14 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from regmind.app.api.router import api_router
-from regmind.app.core.config import settings
-from regmind.app.core.context import current_org_id
-from regmind.app.core.database import SessionLocal
-from regmind.app.integrations.switch.agent_registry import registry
-from regmind.app.integrations.switch.gateway import close_gateway
-from regmind.app.integrations.switch.supervisor import supervisor
-from regmind.app.services.common import ensure_default_organization
+from app.api.router import api_router
+from app.core.config import settings
+from app.core.context import current_org_id
+from app.core.database import SessionLocal
+from app.integrations.switch.agent_registry import registry
+from app.integrations.switch.gateway import close_gateway
+from app.integrations.switch.supervisor import supervisor
+from app.services.common import ensure_default_organization
 
 logging.basicConfig(
     level=logging.DEBUG if settings.debug else logging.INFO,

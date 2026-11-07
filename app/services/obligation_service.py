@@ -3,10 +3,10 @@ from datetime import timezone
 
 from sqlalchemy import select
 
-from regmind.app.core.database import SessionLocal
-from regmind.app.models.circular import Circular
-from regmind.app.models.obligation import Obligation
-from regmind.app.services.common import iso, org_id_or_none, utcnow
+from app.core.database import SessionLocal
+from app.models.circular import Circular
+from app.models.obligation import Obligation
+from app.services.common import iso, org_id_or_none, utcnow
 
 
 def _as_dict(row: Obligation) -> dict:

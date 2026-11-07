@@ -1,4 +1,4 @@
-﻿﻿"""
+"""
 Tools for reading and registering SEBI circulars. Used by regmind-intake.
 
 Design rule: the LLM never copies the full circular text through tool arguments.
@@ -7,9 +7,9 @@ It reads a preview, makes a decision, and the tool re-reads the file itself.
 
 from pathlib import Path
 
-from regmind.app.agents.contracts import CIRCULAR_KINDS
-from regmind.app.agents.gateway import services
-from regmind.app.services.document_service import extract_document
+from app.agents.contracts import CIRCULAR_KINDS
+from app.agents.gateway import services
+from app.services.document_service import extract_document
 
 PREVIEW_CHARS = 8000
 

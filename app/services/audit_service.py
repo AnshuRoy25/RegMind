@@ -1,8 +1,8 @@
 from sqlalchemy import select
 
-from regmind.app.core.database import SessionLocal
-from regmind.app.models.audit import AuditEvent
-from regmind.app.services.common import iso, org_id_or_none
+from app.core.database import SessionLocal
+from app.models.audit import AuditEvent
+from app.services.common import iso, org_id_or_none
 
 
 class SqlAuditService:

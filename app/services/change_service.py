@@ -6,16 +6,16 @@ import uuid
 
 from sqlalchemy import select
 
-from regmind.app.core.database import SessionLocal
-from regmind.app.models.approval import Approval
-from regmind.app.models.change import ChangeSet, ChangeTask
-from regmind.app.models.circular import Circular
-from regmind.app.models.obligation import Obligation
-from regmind.app.models.policy import PolicyEntry, PolicyVersion
-from regmind.app.services.audit_service import audit_service
-from regmind.app.services.common import ensure_default_organization, iso, utcnow
-from regmind.app.services.department_service import department_service
-from regmind.app.services.policy_service import _snapshot
+from app.core.database import SessionLocal
+from app.models.approval import Approval
+from app.models.change import ChangeSet, ChangeTask
+from app.models.circular import Circular
+from app.models.obligation import Obligation
+from app.models.policy import PolicyEntry, PolicyVersion
+from app.services.audit_service import audit_service
+from app.services.common import ensure_default_organization, iso, utcnow
+from app.services.department_service import department_service
+from app.services.policy_service import _snapshot
 
 CATEGORY_DEPARTMENTS = {
     "technical": "Engineering",

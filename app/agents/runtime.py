@@ -16,8 +16,8 @@ from google.adk.runners import Runner
 from google.adk.sessions import InMemorySessionService
 from google.genai import types
 
-from regmind.app.agents.definitions import AGENTS
-from regmind.app.core.config import settings
+from app.agents.definitions import AGENTS
+from app.core.config import settings
 
 log = logging.getLogger("regmind.agents")
 

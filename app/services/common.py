@@ -3,9 +3,9 @@ from typing import Any
 
 from sqlalchemy import select
 
-from regmind.app.core.context import current_org_id
-from regmind.app.core.database import SessionLocal
-from regmind.app.models.organization import Organization
+from app.core.context import current_org_id
+from app.core.database import SessionLocal
+from app.models.organization import Organization
 
 
 def utcnow() -> datetime:
@@ -31,7 +31,7 @@ def ensure_default_organization(db) -> Organization:
     row = default_organization(db)
     if row is not None:
         return row
-    from regmind.app.core.config import settings
+    from app.core.config import settings
 
     row = Organization(
         name=settings.default_organization_name,

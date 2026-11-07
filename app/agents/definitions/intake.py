@@ -1,8 +1,8 @@
-﻿﻿from google.adk.agents import Agent
+from google.adk.agents import Agent
 
-from regmind.app.agents.prompts import load_prompt
-from regmind.app.agents.tools.circular_tools import read_circular, register_circular
-from regmind.app.core.config import settings
+from app.agents.prompts import load_prompt
+from app.agents.tools.circular_tools import read_circular, register_circular
+from app.core.config import settings
 
 intake_agent = Agent(
     name="regmind_intake",

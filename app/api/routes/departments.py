@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from fastapi import APIRouter, HTTPException
 
-from regmind.app.schemas.api import ApproverCreate, ApproverOut, DepartmentCreate, DepartmentOut
-from regmind.app.services.department_service import department_service
+from app.schemas.api import ApproverCreate, ApproverOut, DepartmentCreate, DepartmentOut
+from app.services.department_service import department_service
 
 router = APIRouter(prefix="/departments", tags=["departments"])
 

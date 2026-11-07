@@ -1,8 +1,8 @@
-﻿﻿import uuid
+import uuid
 from sqlalchemy import Boolean, ForeignKey, String, Text, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from regmind.app.models.base import Base, TimestampMixin, UUIDMixin
+from app.models.base import Base, TimestampMixin, UUIDMixin
 
 
 class Department(UUIDMixin, TimestampMixin, Base):
