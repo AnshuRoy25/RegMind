@@ -43,9 +43,9 @@ Everything happens in the conversation, so everyone sees what the agents are doi
 
 Agents hand work to each other by @mentioning the next agent in the room, the same way a person would.
 
-![The five agents](app/agents/flow/agents.png)
+![The five agents](architecture/2_five_agents.png)
 
-![Workflow](app/agents/flow/workflow.png)
+![Workflow](architecture/3_workflow.png)
 
 ---
 
@@ -99,7 +99,7 @@ If something is missing, the auditor says exactly what, for example "retention_d
 
 ## How Switch is used
 
-![System architecture](app/agents/flow/system_architecture.png)
+![System architecture](architecture/1_system_architecture.png)
 
 Switch is the backbone of RegMind.ai. Without it the agents would have no shared place to work with people, and the project would not work.
 
@@ -111,6 +111,42 @@ Switch is the backbone of RegMind.ai. Without it the agents would have no shared
 - **Runs on Mattermost.** The team works in Mattermost, which comes bundled with Switch. Because the agents talk to Switch and not to Mattermost directly, the same room could be moved to Slack, Teams or Discord without changing the agents.
 
 Our agents are custom **Google ADK** agents using **Gemini**, connected to Switch through its Agent Protocol.
+
+---
+
+## How each agent works
+
+All diagrams are in the [`architecture/`](architecture) folder.
+
+<details>
+<summary>regmind-intake</summary>
+
+![Intake flow](architecture/agent_1_intake.png)
+</details>
+
+<details>
+<summary>regmind-parser</summary>
+
+![Parser flow](architecture/agent_2_parser.png)
+</details>
+
+<details>
+<summary>regmind-spec</summary>
+
+![Spec flow](architecture/agent_3_spec.png)
+</details>
+
+<details>
+<summary>regmind-router</summary>
+
+![Router flow](architecture/agent_4_router.png)
+</details>
+
+<details>
+<summary>regmind-auditor</summary>
+
+![Auditor flow](architecture/agent_5_auditor.png)
+</details>
 
 ---
 
@@ -155,6 +191,7 @@ This decision is made in plain Python, not by the model, so it behaves the same 
 
 ```
 RegMind/
+├── architecture/          # all diagrams: system, agents, workflow, one per agent
 ├── app/
 │   ├── agents/
 │   │   ├── definitions/     # the 5 ADK agents
