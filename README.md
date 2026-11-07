@@ -152,7 +152,7 @@ This decision is made in plain Python, not by the model, so it behaves the same 
 ## Project structure
 
 ```
-backend/
+RegMind/
 ├── app/
 │   ├── agents/
 │   │   ├── definitions/     # the 5 ADK agents
@@ -191,7 +191,8 @@ Deploy the **Agent Switch** template on Railway. It starts the Switch server, Po
 You need Python 3.11+ and PostgreSQL running locally.
 
 ```bash
-cd backend
+git clone https://github.com/AnshuRoy25/RegMind.git
+cd RegMind
 python -m venv virtual
 virtual\Scripts\activate          # Windows
 # source virtual/bin/activate     # macOS / Linux
